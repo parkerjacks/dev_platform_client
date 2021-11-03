@@ -28,7 +28,7 @@ const Signup = () => {
         console.log("Success:", data.message)
         if(data.created){
             setSignedUp(true);
-            localStorage.setItem('username',e.target.username.value)
+            
         }else{
             setMessage(data.message)
         }
