@@ -16,7 +16,7 @@ const Signup = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    fetch("http://localhost:3001/api/signup", {
+    fetch("http://localhost:3001/user/signup", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -28,6 +28,7 @@ const Signup = () => {
         console.log("Success:", data.message)
         if(data.created){
             setSignedUp(true);
+            localStorage.setItem('username',e.target.username.value)
             
         }else{
             setMessage(data.message)

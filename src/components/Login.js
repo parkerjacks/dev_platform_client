@@ -1,5 +1,5 @@
 import React,{useState} from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,Redirect } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -7,10 +7,12 @@ import Card from "react-bootstrap/Card";
 
 const Login = () => {
     const [token,setToken] = useState('')
+    const [loggedIn,setLoggedIn] = useState(false)
+    const [error,setError] = useState('')
     const _handleSubmit = (e) =>{
         e.preventDefault();
       const data =  {email:e.target.email.value,password:e.target.password.value}
-      fetch("http://localhost:3001/api/login", {
+      fetch("http://localhost:3001/user/login", {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",
@@ -21,13 +23,23 @@ const Login = () => {
         .then((data) => {
           console.log("Message:", data.message)
           if(data.loggedIn){
-              console.log(data.message,data.accessToken)
+              console.log(data.message,)
               setToken(data.accessToken)
+              setLoggedIn(true)
               
           }else{
               console.log('It didnt work')
+              setError(data.message)
           }
         })
+    }
+
+    if(loggedIn){
+        return <Redirect to={{
+            pathname:'/profile',
+            state:{token:token}
+        }} />
+        
     }
   return (
     <div>
@@ -59,6 +71,7 @@ const Login = () => {
             </Form>
           </Card>
         </Container>
+        <p>{error}</p>
       </div>
       <NavLink to="/">Return Home</NavLink>
     </div>
