@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Form from "react-bootstrap/Form";
 import Login from "./Login";
 
@@ -14,8 +13,13 @@ const Myprofile = () => {
       fetch(`http://localhost:3001/user/${localStorage.getItem("username")}`)
         .then((res) => res.json())
         .then((data) => {
-          console.log(data.user);
-          setUser(data.user);
+            if(data.user.length !== 0){
+                console.log(data.user);
+                setUser(data.user);
+            }else{
+                console.log('broken')
+            }
+          
         });
     }, 2000);
   }, []);
@@ -35,11 +39,9 @@ const Myprofile = () => {
           <h2>{user.username}</h2>
           <img src={user.pic} alt="profile_picture" />
           <div style={{display:'inline'}}>
-          <ul>
-            {user.currentLanguages.map((language) => {
-              return <li>{language}</li>;
-            })}
-          </ul>
+          <p>{user.currentLanguages[0]}</p>
+          <p>{user.currentLanguages[1]}</p>
+          <p>{user.currentLanguages[2]}</p>
           </div>
         </Card>
         <Card>
