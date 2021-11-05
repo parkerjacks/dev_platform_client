@@ -71,6 +71,7 @@ const Createprofile = () => {
       </p>
       <Container>
         <Card bg="info">
+            <p>Make sure to include https:// or http:// with links</p>
           <Form onSubmit={_handleSubmit}>
             <Card bg="light" style={{ margin: "5px" }}>
               {/* github */}

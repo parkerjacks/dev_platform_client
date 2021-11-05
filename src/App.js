@@ -5,7 +5,7 @@ import Home from './components/Home'
 import Navbar1 from './components/Navbar1';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import Profile from './components/Profile';
+import Myprofile from './components/Profile';
 import Feed from './components/Feed';
 import Createprofile from './components/Createprofile';
 
@@ -16,7 +16,7 @@ function App() {
       <Route  path='/navbar1' component={Navbar1}/>
       <Route  path='/signup' component={Signup}/>
       <Route  path='/login' component={Login}/>
-      <Route  path='/profile' component={Profile}/>
+      <Route  path='/profile' component={Myprofile}/>
       <Route  path='/feed' component={Feed}/>
       <Route  path='/create' component={Createprofile}/>
     </Switch>

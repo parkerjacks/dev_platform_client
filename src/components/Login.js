@@ -11,7 +11,7 @@ const Login = () => {
     const [error,setError] = useState('')
     const _handleSubmit = (e) =>{
         e.preventDefault();
-      const data =  {email:e.target.email.value,password:e.target.password.value}
+      const data =  {username:e.target.username.value,password:e.target.password.value}
       fetch("http://localhost:3001/user/login", {
         method: "POST", // or 'PUT'
         headers: {
@@ -26,6 +26,7 @@ const Login = () => {
               console.log(data.message,)
               setToken(data.accessToken)
               setLoggedIn(true)
+              localStorage.setItem('username',e.target.username.value)
               
           }else{
               console.log('It didnt work')
@@ -49,11 +50,11 @@ const Login = () => {
           <Card bg="info">
             <Form onSubmit={_handleSubmit} >
               <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label className="label">Email address</Form.Label>
+                <Form.Label className="label">Username</Form.Label>
                 <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  name="email"
+                  type="text"
+                  placeholder="Enter username"
+                  name="username"
                 />
               </Form.Group>
 
