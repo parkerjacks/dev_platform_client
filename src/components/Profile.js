@@ -61,15 +61,45 @@ class Myprofile extends Component {
 
         <Container>
           <Card>
-            <Card.Title as='h4'>{this.state.user.username}</Card.Title>
+            <Card.Header>
+              <div style={{ display: "flex", justifyContent: "space-around" }}>
+                <a
+                  href={this.state.user.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Github
+                </a>
+                <a
+                  href={this.state.user.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href={this.state.user.portfolio}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Portfolio
+                </a>
+              </div>
+            </Card.Header>
+            <Card.Title as="h4">{this.state.user.username}</Card.Title>
             <Card.Body>
-            {/* <img src={localStorage.getItem('profilePic')} alt="profile_picture" /> */}
-            <div style={{ display: "inline" }}>
-                <h6><u>My Languages:</u></h6>
-              <p><i>{this.state.languages[0]}</i></p>
-              <p>{this.state.languages[1]}</p>
-              <p>{this.state.languages[2]}</p>
-            </div>
+              {/* <img src={localStorage.getItem('profilePic')} alt="profile_picture" /> */}
+
+              <div style={{ display: "inline" }}>
+                <h6>
+                  <u>My Languages:</u>
+                </h6>
+                <p>
+                  <i>{this.state.languages[0]}</i>
+                </p>
+                <p>{this.state.languages[1]}</p>
+                <p>{this.state.languages[2]}</p>
+              </div>
             </Card.Body>
           </Card>
           <Card>
@@ -86,21 +116,7 @@ class Myprofile extends Component {
               </Button>
             </Form>
           </Card>
-          <Card style={{ margin: "5px" }}>
-            <a href={this.state.user.github} target="_blank" rel="noreferrer">
-              Github
-            </a>
-            <a href={this.state.user.linkedin} target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
-            <a
-              href={this.state.user.portfolio}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Portfolio
-            </a>
-          </Card>
+
           <Button onClick={this._handleLogout}>Logout</Button>
         </Container>
       </div>

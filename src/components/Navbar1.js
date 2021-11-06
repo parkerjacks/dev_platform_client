@@ -15,7 +15,7 @@ const Navbar1 = () => {
           <Nav className="justify-content-end">
             <Nav.Link href="/signup">Sign Up</Nav.Link>
             <Nav.Link href="/login">Login </Nav.Link>
-            <Nav.Link href="#pricing">Something</Nav.Link>
+            <Nav.Link href="#pricing">Dev_Platform<i>(Premium)</i></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
