@@ -1,7 +1,7 @@
 import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 class Feed extends Component {
   constructor() {
@@ -24,26 +24,52 @@ class Feed extends Component {
       });
   };
 
-  _handleInitiateChat = () =>{
-
-  }
+  _handleInitiateChat = () => {};
 
   render() {
     return (
       <Container>
         <h1>Feed</h1>
         {this.state.matchedUsers.map((user) => {
-            const [firstElement,secondElement,thirdElement] = user.currentLanguages
-            const [firstIndex,secondIndex,thirdIndex] = user.newLanguages
+          const [firstElement, secondElement, thirdElement] = user.currentLanguages;
+          const [firstIndex, secondIndex, thirdIndex] = user.newLanguages;
           return (
             <Card key={user.id}>
-              <Card.Title>{user.username}</Card.Title>
+              <Card.Header as="h4">{user.username} </Card.Header>
               <Card.Body>
+                  <div style={{display:'flex',justifyContent:'space-around'}}>
+                <Card.Text className="text-end">
+                  <a href={user.github}>
+                    <Card.Subtitle className="text-end">Github</Card.Subtitle>
+                  </a>
+                </Card.Text>
+                <Card.Text className="text-end">
+                  <a href={user.linkedin}>
+                    <Card.Subtitle className="text-end">LinkedIn</Card.Subtitle>
+                  </a>
+                </Card.Text>
+                <Card.Text className="text-end">
+                  <a href={user.portfolio}>
+                    <Card.Subtitle className="text-end">
+                      Portfolio
+                    </Card.Subtitle>
+                  </a>
+                </Card.Text>
+                </div>
                 <Card.Subtitle>My Languages:</Card.Subtitle>
-                <Card.Text>{firstElement},{secondElement},{thirdElement}</Card.Text>
+                <Card.Text>
+                  {firstElement},{secondElement},{thirdElement}
+                </Card.Text>
                 <Card.Subtitle>Languages I want to Learn:</Card.Subtitle>
-                <Card.Text>{firstIndex},{secondIndex},{thirdIndex}</Card.Text>
-                <Card.Subtitle>{user.banner}</Card.Subtitle>
+                <Card.Text>
+                  {firstIndex},{secondIndex},{thirdIndex}
+                </Card.Text>
+
+                <Card.Footer>
+                  <p>
+                    <i>{user.banner}</i>
+                  </p>
+                </Card.Footer>
               </Card.Body>
               <Button>Start Chat</Button>
             </Card>

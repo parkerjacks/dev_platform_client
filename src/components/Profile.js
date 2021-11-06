@@ -12,6 +12,7 @@ class Myprofile extends Component {
     this.state = {
       user: [],
       bannerMessage: "",
+      languages:[]
     };
   }
   componentDidMount = () => {
@@ -20,6 +21,7 @@ class Myprofile extends Component {
       .then((data) => {
         if (data.user.length !== 0) {
           this.setState({ user: data.user });
+          this.setState({languages:data.user.currentLanguages})
           console.log(this.state.user);
         } else {
           console.log("broken");
@@ -50,6 +52,7 @@ class Myprofile extends Component {
         console.error("Error:", error);
       });
   };
+  
   render() {
     if (!localStorage.getItem("username")) return <Login />;
     return (
@@ -61,7 +64,10 @@ class Myprofile extends Component {
             <h2>{this.state.user.username}</h2>
             {/* <img src={this.state.user.pic} alt="profile_picture" /> */}
             <div style={{ display: "inline" }}>
-              {this.state.user.currentLanguages}
+              <li>{this.state.languages[0]}</li>
+              <li>{this.state.languages[1]}</li>
+              <li>{this.state.languages[2]}</li>
+              
             </div>
           </Card>
           <Card>
