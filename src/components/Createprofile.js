@@ -38,8 +38,9 @@ const Createprofile = () => {
       portfolio: e.target.portfolio.value,
       knownLanguages: knownChecked,
       toLearn: toLearnChecked,
-      profilePic:e.target.pic.value
+      
     };
+    localStorage.setItem('profilePic',e.target.pic.value)
     console.log(data)
     fetch(`http://localhost:3001/user/${localStorage.getItem('username')}/profile/create`, {
         method: "PUT", // or 'PUT'

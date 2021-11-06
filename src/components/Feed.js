@@ -2,6 +2,7 @@ import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import {NavLink} from 'react-router-dom'
 
 class Feed extends Component {
   constructor() {
@@ -10,7 +11,7 @@ class Feed extends Component {
       matchedUsers: [],
     };
   }
-
+  
   componentDidMount = () => {
     fetch(
       `http://localhost:3001/user/${localStorage.getItem(
@@ -24,32 +25,34 @@ class Feed extends Component {
       });
   };
 
-  _handleInitiateChat = () => {};
-
+  _handleInitiateChat = () => {
+      
+  };
   render() {
     return (
       <Container>
         <h1>Feed</h1>
+
         {this.state.matchedUsers.map((user) => {
           const [firstElement, secondElement, thirdElement] = user.currentLanguages;
           const [firstIndex, secondIndex, thirdIndex] = user.newLanguages;
           return (
-            <Card key={user.id}>
+            <Card key={user.id} style={{margin:'15px'}} >
               <Card.Header as="h4">{user.username} </Card.Header>
-              <Card.Body>
+              <Card.Body style={{backgroundColor:'pink'}}>
                   <div style={{display:'flex',justifyContent:'space-around'}}>
                 <Card.Text className="text-end">
-                  <a href={user.github}>
+                  <a href={user.github} target='_blank' rel="noreferrer" >
                     <Card.Subtitle className="text-end">Github</Card.Subtitle>
                   </a>
                 </Card.Text>
                 <Card.Text className="text-end">
-                  <a href={user.linkedin}>
+                  <a href={user.linkedin} target='_blank' rel="noreferrer">
                     <Card.Subtitle className="text-end">LinkedIn</Card.Subtitle>
                   </a>
                 </Card.Text>
                 <Card.Text className="text-end">
-                  <a href={user.portfolio}>
+                  <a href={user.portfolio} target='_blank' rel="noreferrer">
                     <Card.Subtitle className="text-end">
                       Portfolio
                     </Card.Subtitle>
@@ -58,23 +61,24 @@ class Feed extends Component {
                 </div>
                 <Card.Subtitle>My Languages:</Card.Subtitle>
                 <Card.Text>
-                  {firstElement},{secondElement},{thirdElement}
+                  {firstElement}, {secondElement}, {thirdElement}
                 </Card.Text>
                 <Card.Subtitle>Languages I want to Learn:</Card.Subtitle>
                 <Card.Text>
-                  {firstIndex},{secondIndex},{thirdIndex}
+                  {firstIndex}, {secondIndex}, {thirdIndex}
                 </Card.Text>
 
-                <Card.Footer>
+                <Card.Footer style={{backgroundColor:'cyan'}}>
                   <p>
                     <i>{user.banner}</i>
                   </p>
                 </Card.Footer>
               </Card.Body>
-              <Button>Start Chat</Button>
+              <Button onClick={this._handleInitiateChat}>Start Chat</Button>
             </Card>
           );
         })}
+        <NavLink to='/profile'>My Profile</NavLink>
       </Container>
     );
   }
