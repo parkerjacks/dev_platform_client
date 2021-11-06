@@ -61,13 +61,16 @@ class Myprofile extends Component {
 
         <Container>
           <Card>
-            <h2>{this.state.user.username}</h2>
+            <Card.Title as='h4'>{this.state.user.username}</Card.Title>
+            <Card.Body>
             {/* <img src={localStorage.getItem('profilePic')} alt="profile_picture" /> */}
             <div style={{ display: "inline" }}>
-              <li>{this.state.languages[0]}</li>
-              <li>{this.state.languages[1]}</li>
-              <li>{this.state.languages[2]}</li>
+                <h6><u>My Languages:</u></h6>
+              <p><i>{this.state.languages[0]}</i></p>
+              <p>{this.state.languages[1]}</p>
+              <p>{this.state.languages[2]}</p>
             </div>
+            </Card.Body>
           </Card>
           <Card>
             <Form onSubmit={this._handleBanner}>
