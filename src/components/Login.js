@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const Login = () => {
-    const [token,setToken] = useState('')
     const [loggedIn,setLoggedIn] = useState(false)
     const [error,setError] = useState('')
     const _handleSubmit = (e) =>{
@@ -24,7 +23,6 @@ const Login = () => {
           console.log("Message:", data.message)
           if(data.loggedIn){
               console.log(data.message,)
-              setToken(data.accessToken)
               setLoggedIn(true)
               localStorage.setItem('username',e.target.username.value)
               
@@ -36,10 +34,7 @@ const Login = () => {
     }
 
     if(loggedIn){
-        return <Redirect to={{
-            pathname:'/profile',
-            state:{token:token}
-        }} />
+        return <Redirect to='/profile' />
         
     }
   return (

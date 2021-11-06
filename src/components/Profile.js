@@ -1,71 +1,103 @@
-import React, { useEffect, useState } from "react";
+import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Login from "./Login";
+import * as BI from "react-icons/bi/";
 
-const Myprofile = () => {
-  const [user, setUser] = useState([]);
+class Myprofile extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: [],
+      bannerMessage: "",
+    };
+  }
+  componentDidMount = () => {
+    fetch(`http://localhost:3001/user/${localStorage.getItem("username")}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.user.length !== 0) {
+          this.setState({ user: data.user });
+          console.log(this.state.user);
+        } else {
+          console.log("broken");
+        }
+      });
+  };
 
-  useEffect(() => {
-    setTimeout(() => {
-      fetch(`http://localhost:3001/user/${localStorage.getItem("username")}`)
-        .then((res) => res.json())
-        .then((data) => {
-            if(data.user.length !== 0){
-                console.log(data.user);
-                setUser(data.user);
-            }else{
-                console.log('broken')
-            }
-          
-        });
-    }, 2000);
-  }, []);
-
-  const _handleLogout = () => {
+  _handleLogout = () => {
     localStorage.removeItem("username");
     window.location.reload();
   };
+  _handleBanner = (e) => {
+      let username = localStorage.getItem('username')
+    e.preventDefault();
+    this.setState({ bannerMessage: e.target.banner.value });
+    fetch("http://localhost:3001/user/" + username, {
+      method: "PUT", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({data:e.target.banner.value}),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data.message);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  render() {
+    if (!localStorage.getItem("username")) return <Login />;
+    return (
+      <div>
+        <h1>Profile</h1>
 
-  if (!localStorage.getItem("username")) return <Login />;
-  return (
-    <div>
-      <h1>Profile</h1>
-
-      <Container>
-        <Card>
-          <h2>{user.username}</h2>
-          <img src={user.pic} alt="profile_picture" />
-          <div style={{display:'inline'}}>
-          <p>{user.currentLanguages[0]}</p>
-          <p>{user.currentLanguages[1]}</p>
-          <p>{user.currentLanguages[2]}</p>
-          </div>
-        </Card>
-        <Card>
-          <Form.Control
-            as="textarea"
-            placeholder="What's on your mind? What do you want to chat about today?"
-            style={{ height: "100px" }}
-          />
-        </Card>
-        <Card style={{ margin: "5px" }}>
-          <a href={user.github} target="_blank" rel="noreferrer">
-            Github
-          </a>
-          <a href={user.linkedin} target="_blank" rel="noreferrer">
-            LinkedIn
-          </a>
-          <a href={user.portfolio} target="_blank" rel="noreferrer">
-            Portfolio
-          </a>
-        </Card>
-        <Button onClick={_handleLogout}>Logout</Button>
-      </Container>
-    </div>
-  );
-};
+        <Container>
+          <Card>
+            <h2>{this.state.user.username}</h2>
+            {/* <img src={this.state.user.pic} alt="profile_picture" /> */}
+            <div style={{ display: "inline" }}>
+              {this.state.user.currentLanguages}
+            </div>
+          </Card>
+          <Card>
+            <Form onSubmit={this._handleBanner}>
+              <Form.Control
+                as="textarea"
+                placeholder="What's on your mind? What do you want to chat about today?"
+                name="banner"
+                defaultValue={this.state.bannerMessage}
+                style={{ height: "100px" }}
+              />
+              <Button type="submit">
+                <BI.BiCommentCheck />
+              </Button>
+            </Form>
+          </Card>
+          <Card style={{ margin: "5px" }}>
+            <a href={this.state.user.github} target="_blank" rel="noreferrer">
+              Github
+            </a>
+            <a href={this.state.user.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <a
+              href={this.state.user.portfolio}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Portfolio
+            </a>
+          </Card>
+          <Button onClick={this._handleLogout}>Logout</Button>
+        </Container>
+      </div>
+    );
+  }
+}
 
 export default Myprofile;
