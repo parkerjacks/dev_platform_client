@@ -11,7 +11,7 @@ const Login = () => {
     const _handleSubmit = (e) =>{
         e.preventDefault();
       const data =  {username:e.target.username.value,password:e.target.password.value}
-      fetch("http://localhost:3001/user/login", {
+      fetch("https://dev-platform-server-deployed.herokuapp.com/user/login", {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",

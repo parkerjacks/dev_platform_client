@@ -39,7 +39,7 @@ class Myprofile extends Component {
     let username = localStorage.getItem("username");
     e.preventDefault();
     this.setState({ bannerMessage: e.target.banner.value });
-    fetch("http://localhost:3001/user/" + username, {
+    fetch("https://dev-platform-server-deployed.herokuapp.com/user/" + username, {
       method: "PUT", // or 'PUT'
       headers: {
         "Content-Type": "application/json",

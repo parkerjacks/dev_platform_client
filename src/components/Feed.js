@@ -15,7 +15,7 @@ class Feed extends Component {
 
   componentDidMount = () => {
     fetch(
-      `http://localhost:3001/user/${localStorage.getItem(
+      `https://dev-platform-server-deployed.herokuapp.com/user/${localStorage.getItem(
         "username"
       )}/users/feed`
     )
