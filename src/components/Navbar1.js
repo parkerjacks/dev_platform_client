@@ -6,8 +6,8 @@ import "../styles/Navbar.css";
 
 const Navbar1 = () => {
   return (
-    <div>
-      <Navbar bg="info" variant="light">
+    <div style={{backgroundColor:'#dddfd4',height:'100vh'}}>
+      <Navbar style={{backgroundColor:'#fae596'}} variant="light">
         <Container fluid>
           <Navbar.Brand href="#home" className="justify-content-start">
             Dev Platform
@@ -15,12 +15,12 @@ const Navbar1 = () => {
           <Nav className="justify-content-end">
             <Nav.Link href="/signup">Sign Up</Nav.Link>
             <Nav.Link href="/login">Login </Nav.Link>
-            <Nav.Link href="#pricing">Dev_Platform(<i>Premium</i>)</Nav.Link>
+            {/* <Nav.Link href="#pricing">Dev_Platform(<i>Premium</i>)</Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>
       <div className='banner'>
-        <Container>
+        <Container style={{backgroundColor:'#3FB0AC',color:'#fae596'}}>
         <p>
           Want to learn a new programming language through interaction with a
           fellow developer? Someone with first hand experience to help you avoid

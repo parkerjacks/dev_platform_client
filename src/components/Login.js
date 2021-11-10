@@ -38,11 +38,11 @@ const Login = () => {
         
     }
   return (
-    <div>
+    <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
       <h1>Login</h1>
       <div className="form">
         <Container>
-          <Card bg="info">
+          <Card style={{backgroundColor:'#3FB0AC'}}>
             <Form onSubmit={_handleSubmit} >
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="label">Username</Form.Label>
@@ -69,7 +69,7 @@ const Login = () => {
         </Container>
         <p>{error}</p>
       </div>
-      <NavLink to="/">Return Home</NavLink>
+      <NavLink style={{color:'#3FB0AC'}}to="/">Return Home</NavLink>
     </div>
   );
 };
