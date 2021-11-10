@@ -1,0 +1,15 @@
+#body{
+    background-color: #dddfd4;
+    height: 100vh;
+}
+
+.profileLink{
+    color:#3FB0AC;
+}
+#card-banner{
+    background-color: #fae596;
+}
+#logout{
+   color:#3FB0AC;
+   border:#fae596 solid;
+}

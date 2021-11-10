@@ -1,0 +1,27 @@
+
+
+.text-end {
+
+  color: #3FB0AC;
+}
+.text-center {
+  color: #3FB0AC;
+}
+#button {
+  color: #3FB0AC;
+}
+#profileLink {
+  color: #3FB0AC;
+}
+#menuBar {
+  display: flex;
+  justify-content: space-around;
+  position: sticky;
+}
+
+.body-text{
+    color:#3FB0AC;
+}
+.yell-back{
+    background-color: #fae596;
+}

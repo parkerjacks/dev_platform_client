@@ -5,6 +5,8 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Login from "./Login";
 import * as BI from "react-icons/bi/";
+import { NavLink } from "react-router-dom";
+import '../styles/Profile.css'
 
 class Myprofile extends Component {
   constructor() {
@@ -56,17 +58,18 @@ class Myprofile extends Component {
   render() {
     if (!localStorage.getItem("username")) return <Login />;
     return (
-      <div>
-        <h1>Profile</h1>
+      <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
+        <h1>{this.state.user.username}</h1>
 
         <Container>
           <Card>
-            <Card.Header>
+            <Card.Header style={{backgroundColor:'#fae596'}}>
               <div style={{ display: "flex", justifyContent: "space-around" }}>
                 <a
                   href={this.state.user.github}
                   target="_blank"
                   rel="noreferrer"
+                  className='profileLink'
                 >
                   Github
                 </a>
@@ -74,6 +77,7 @@ class Myprofile extends Component {
                   href={this.state.user.linkedin}
                   target="_blank"
                   rel="noreferrer"
+                  className='profileLink'
                 >
                   LinkedIn
                 </a>
@@ -81,16 +85,18 @@ class Myprofile extends Component {
                   href={this.state.user.portfolio}
                   target="_blank"
                   rel="noreferrer"
+                  className='profileLink'
                 >
                   Portfolio
                 </a>
+                <NavLink className='profileLink' to="feed">My Feed</NavLink>
               </div>
             </Card.Header>
-            <Card.Title as="h4">{this.state.user.username}</Card.Title>
-            <Card.Body>
+
+            <Card.Body style={{backgroundColor:'#dddfd4',color:'#3FB0AC'}}>
               {/* <img src={localStorage.getItem('profilePic')} alt="profile_picture" /> */}
 
-              <div style={{ display: "inline" }}>
+              <div  style={{ display: "inline" }}>
                 <h6>
                   <u>My Languages:</u>
                 </h6>
@@ -102,7 +108,7 @@ class Myprofile extends Component {
               </div>
             </Card.Body>
           </Card>
-          <Card>
+          <Card id='card-banner'>
             <Form onSubmit={this._handleBanner}>
               <Form.Control
                 as="textarea"
@@ -111,13 +117,13 @@ class Myprofile extends Component {
                 defaultValue={this.state.bannerMessage}
                 style={{ height: "100px" }}
               />
-              <Button type="submit">
+              <Button style={{backgroundColor:'#3FB0AC'}} type="submit">
                 <BI.BiCommentCheck />
               </Button>
             </Form>
           </Card>
 
-          <Button onClick={this._handleLogout}>Logout</Button>
+          <Button id='logout' style={{backgroundColor:'#fae596',margin:'2px'}} onClick={this._handleLogout}>Logout</Button>
         </Container>
       </div>
     );

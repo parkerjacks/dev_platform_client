@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { NavLink } from "react-router-dom";
+import "../styles/Feed.css";
 
 class Feed extends Component {
   constructor() {
@@ -29,15 +30,24 @@ class Feed extends Component {
   render() {
     return (
       <Container>
-        <h1>Feed</h1>
-
+        <div id="menuBar">
+          <NavLink id="profileLink" to="/profile">
+            My Profile
+          </NavLink>
+          <NavLink id="profileLink" to="/profile">
+            Near Me
+          </NavLink>
+        </div>
         {this.state.matchedUsers.map((user) => {
           const [firstElement, secondElement, thirdElement] =
             user.currentLanguages;
           const [firstIndex, secondIndex, thirdIndex] = user.newLanguages;
           return (
             <Card key={user.id} style={{ margin: "15px" }}>
-              <Card.Header>
+              <Card.Header
+                className="yell-back"
+                style={{ backgroundColor: "#fae596" }}
+              >
                 {" "}
                 <div
                   style={{ display: "flex", justifyContent: "space-around" }}
@@ -62,29 +72,44 @@ class Feed extends Component {
                     </a>
                   </Card.Text>
                 </div>
+                <Card.Title as="h4" className="text-center">
+                  {user.username}{" "}
+                </Card.Title>
               </Card.Header>
-              <Card.Title as="h4" className='text-center'>{user.username} </Card.Title>
-              <Card.Body style={{ backgroundColor: "pink" }}>
-                <Card.Subtitle>My Languages:</Card.Subtitle>
-                <Card.Text>
+              <Card.Body style={{ backgroundColor: "#dddfd4" }}>
+                <Card.Subtitle className="body-text">
+                  My Languages:
+                </Card.Subtitle>
+                <Card.Text className="body-text" style={{ color: "#3FB0AC" }}>
                   {firstElement}, {secondElement}, {thirdElement}
                 </Card.Text>
-                <Card.Subtitle>Languages I want to Learn:</Card.Subtitle>
-                <Card.Text>
+                <Card.Subtitle className="body-text">
+                  Languages I want to Learn:
+                </Card.Subtitle>
+                <Card.Text className="body-text">
                   {firstIndex}, {secondIndex}, {thirdIndex}
                 </Card.Text>
 
-                <Card.Footer style={{ backgroundColor: "cyan" }}>
-                  <p>
+                <Card.Footer
+                  className="yell-back"
+                  style={{ backgroundColor: "#fae596" }}
+                >
+                  <p className="body-text">
                     <i>{user.banner}</i>
                   </p>
                 </Card.Footer>
               </Card.Body>
-              <Button onClick={this._handleInitiateChat}>Start Chat</Button>
+              <Button
+                id="button"
+                className="yell-back"
+                style={{ backgroundColor: "#fae596" }}
+                onClick={this._handleInitiateChat}
+              >
+                Start Chat
+              </Button>
             </Card>
           );
         })}
-        <NavLink to="/profile">My Profile</NavLink>
       </Container>
     );
   }
