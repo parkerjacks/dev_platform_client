@@ -20,6 +20,7 @@ const Signup = () => {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*"
       },
       body: JSON.stringify(data),
     })
