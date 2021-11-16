@@ -42,7 +42,7 @@ const Createprofile = () => {
     };
     localStorage.setItem('profilePic',e.target.pic.value)
     console.log(data)
-    fetch(`http://localhost:3001/user/${localStorage.getItem('username')}/profile/create`, {
+    fetch(`https://dev-plat.herokuapp.com/user/${localStorage.getItem('username')}/profile/create`, {
         method: "PUT", // or 'PUT'
         headers: {
           "Content-Type": "application/json",

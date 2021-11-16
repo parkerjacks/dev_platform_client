@@ -18,7 +18,7 @@ class Myprofile extends Component {
     };
   }
   componentDidMount = () => {
-    fetch(`http://localhost:3001/user/${localStorage.getItem("username")}`)
+    fetch(`https://dev-plat.herokuapp.com/user/${localStorage.getItem("username")}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.user.length !== 0) {
@@ -39,7 +39,7 @@ class Myprofile extends Component {
     let username = localStorage.getItem("username");
     e.preventDefault();
     this.setState({ bannerMessage: e.target.banner.value });
-    fetch("http://localhost:3001/user/" + username, {
+    fetch("https://dev-plat.herokuapp.com/user/" + username, {
       method: "PUT", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
