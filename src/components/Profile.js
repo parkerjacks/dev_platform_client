@@ -39,7 +39,7 @@ class Myprofile extends Component {
     let username = localStorage.getItem("username");
     e.preventDefault();
     this.setState({ bannerMessage: e.target.banner.value });
-    fetch("https://dev-plat.herokuapp.com/user/" + username, {
+    fetch("http://localhost:3001/user/" + username, {
       method: "PUT", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
@@ -53,10 +53,14 @@ class Myprofile extends Component {
       .catch((error) => {
         console.error("Error:", error);
       });
+      
+
   };
 
+  
+
   render() {
-    if (!localStorage.getItem("username")) return <Login />;
+    if(!localStorage.getItem("username")) return <Login /> 
     return (
       <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
         <h1>{this.state.user.username}</h1>
@@ -100,11 +104,9 @@ class Myprofile extends Component {
                 <h6>
                   <u>My Languages:</u>
                 </h6>
-                <p>
-                  <i>{this.state.languages[0]}</i>
-                </p>
-                <p>{this.state.languages[1]}</p>
-                <p>{this.state.languages[2]}</p>
+                <p><i>{this.state.languages[0]}</i></p>
+                <p><i>{this.state.languages[1]}</i></p>
+                <p><i>{this.state.languages[2]}</i></p>
               </div>
             </Card.Body>
           </Card>
@@ -127,6 +129,7 @@ class Myprofile extends Component {
         </Container>
       </div>
     );
+    
   }
 }
 

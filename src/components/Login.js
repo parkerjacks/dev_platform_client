@@ -34,7 +34,7 @@ const Login = () => {
     }
 
     if(loggedIn){
-        return <Redirect to='/feed' />
+        return <Redirect to='/profile' />
         
     }
   return (
