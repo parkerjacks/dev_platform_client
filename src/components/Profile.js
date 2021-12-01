@@ -18,7 +18,7 @@ class Myprofile extends Component {
     };
   }
   componentDidMount = () => {
-    fetch(`https://dev-plat.herokuapp.com/user/${localStorage.getItem("username")}`)
+    fetch(`http://localhost:3001/user/${localStorage.getItem("username")}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.user.length !== 0) {

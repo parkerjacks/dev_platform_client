@@ -16,7 +16,7 @@ const Signup = () => {
       email: e.target.email.value,
       password: e.target.password.value,
     };
-    fetch("https://dev-plat.herokuapp.com/user/signup", {
+    fetch("http://localhost:3001/user/signup", {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
