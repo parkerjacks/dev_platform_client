@@ -1,16 +1,21 @@
-import React,{useState} from "react";
-import { NavLink,Redirect } from "react-router-dom";
+//import React,{useState} from "react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { useHistory } from "react-router-dom";
+
 
 const Login = () => {
-    const [loggedIn,setLoggedIn] = useState(false)
-    const [error,setError] = useState('')
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [error,setError] = useState('');
+    const history = useHistory();
+    
     const _handleSubmit = (e) =>{
-        e.preventDefault();
-      const data =  {username:e.target.username.value,password:e.target.password.value}
+      e.preventDefault();
+      const data =  {username:e.target.username.value, password:e.target.password.value}
       fetch("http://localhost:3001/user/login", {
         method: "POST", // or 'PUT'
         headers: {
@@ -20,23 +25,27 @@ const Login = () => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Message:", data.message)
+          //console.log("Message:", data.message)
           if(data.loggedIn){
-              console.log(data.message,)
-              setLoggedIn(true)
-              localStorage.setItem('username',e.target.username.value)
-              
-          }else{
+            //console.log(data.message,)
+            setLoggedIn(true);
+            console.log(loggedIn); //Why rtn false ??  Also, prevents compiled w/ warning msg: 'loggedIn' is assigned a value but never used)
+            localStorage.setItem('username',e.target.username.value);
+            let theUserId = data.userId;
+            history.push(`/feed/${theUserId}`);
+          } else {
               console.log('It didnt work')
               setError(data.message)
           }
         })
-    }
+      }
+     
+      //console.log(loggedIn);
 
-    if(loggedIn){
-        return <Redirect to='/feed' />
-        
-    }
+    /* if(loggedIn){
+        return <Redirect to='/feed' />  
+    } */
+    
   return (
     <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
       <h1>Login</h1>

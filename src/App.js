@@ -9,19 +9,22 @@ import Myprofile from './components/Profile';
 import Feed from './components/Feed';
 import Createprofile from './components/Createprofile';
 
-function App() {
+function App() {  
   return (
     <Switch>
       <Route exact path='/' component={Home}/>
       <Route  path='/navbar1' component={Navbar1}/>
       <Route  path='/signup' component={Signup}/>
       <Route  path='/login' component={Login}/>
-      <Route  path='/profile' component={Myprofile}/>
-      <Route  path='/feed' component={Feed}/>
+      <Route  path='/profile/:id' component={Myprofile}/>
+      <Route  path='/feed/:id' component={Feed}/>
       <Route  path='/create' component={Createprofile}/>
     </Switch>
-    
   );
 }
-
+   
 export default App;
+     
+    
+      
+    

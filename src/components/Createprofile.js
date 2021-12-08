@@ -4,13 +4,30 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import {useState} from 'react'
-import {Redirect} from 'react-router-dom'
+//import {Redirect} from 'react-router-dom'
+import { useHistory } from "react-router-dom";
+
 
 const Createprofile = () => {
-    const [created,setCreated] = useState(false)
+  const [created, setCreated] = useState(false);
+  const [profilePic, setProfilePic] = useState(null);
+  const history = useHistory();
+
+  //Converts User Img to URL and Store in State Variable
+  const _handlePicUpload = (e) => {
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      setProfilePic(reader.result);
+      //localStorage.setItem("profile-pic", reader.result)
+    })
+    reader.readAsDataURL(e.target.files[0]);
+  }
+ 
+  //console.log(profilePic);
+  
   const _handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    //console.log(e);
     const knownCheckBoxes = document.getElementsByClassName("form-check-input");
     let knownChecked = [];
     let toLearnChecked = [];
@@ -32,16 +49,19 @@ const Createprofile = () => {
         toLearnChecked.push(knownCheckBoxes[i].name);
       }
     }
+
     const data = {
       github: e.target.github.value,
       linkedin: e.target.linkedin.value,
       portfolio: e.target.portfolio.value,
       knownLanguages: knownChecked,
       toLearn: toLearnChecked,
-      
+      userImg: profilePic
     };
-    localStorage.setItem('profilePic',e.target.pic.value)
-    console.log(data)
+
+    localStorage.setItem('profilePic', e.target.pic.value)
+    //console.log(e.target.pic.value);
+    
     fetch(`http://localhost:3001/user/${localStorage.getItem('username')}/profile/create`, {
         method: "PUT", // or 'PUT'
         headers: {
@@ -52,17 +72,23 @@ const Createprofile = () => {
         .then((response) => response.json())
         .then((data) => {
           if(data.update){
-              console.log('updated')
-              setCreated(true)
+              //console.log('updated')
+              setCreated(true);
+              console.log(created); //This rtns false ?? 
+              
+              let theUserId = data.userId;
+              history.push(`/profile/${theUserId}`);
           }
-         
         })
   };
-  if(created){
+
+
+ /*  if(created){
       return(
           <Redirect to='/profile' />
       )
-  }
+  } */
+
   return (
     <div>
       <h1>Create Profile</h1>
@@ -397,7 +423,7 @@ const Createprofile = () => {
             <Card style={{ margin: "5px" }} bg="light">
               <Form.Group>
                 <Form.Label>Upload Profile Picture:</Form.Label>
-                <Form.Control name='pic'type="file" />
+                <Form.Control name='pic' type="file" onChange={_handlePicUpload} />
               </Form.Group>
             </Card>
             <Button variant="light" type="submit">
