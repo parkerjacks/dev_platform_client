@@ -15,8 +15,11 @@ class Myprofile extends Component {
       user: [],
       bannerMessage: "",
       languages: [],
+      userId: "",
+      userPic: ""
     };
   }
+
   componentDidMount = () => {
     fetch(`http://localhost:3001/user/${localStorage.getItem("username")}`)
       .then((res) => res.json())
@@ -24,7 +27,12 @@ class Myprofile extends Component {
         if (data.user.length !== 0) {
           this.setState({ user: data.user });
           this.setState({ languages: data.user.currentLanguages });
-          console.log(this.state.user);
+          this.setState({ userId: data.userId });
+          this.setState({ userPic: data.userImg });
+          //console.log(this.state.userPic);
+
+          //console.log(this.state.user);
+          //console.log(this.state.userId);
         } else {
           console.log("broken");
         }
@@ -35,6 +43,7 @@ class Myprofile extends Component {
     localStorage.removeItem("username");
     window.location.reload();
   };
+
   _handleBanner = (e) => {
     let username = localStorage.getItem("username");
     e.preventDefault();
@@ -55,11 +64,17 @@ class Myprofile extends Component {
       });
   };
 
+  
   render() {
     if (!localStorage.getItem("username")) return <Login />;
+    let feed = `/feed/${this.state.userId}`;
+    //const profilePicUrl = localStorage.getItem("profile-pic");
+    
     return (
       <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
         <h1>{this.state.user.username}</h1>
+
+        <img src={this.state.userPic} alt="user profile pic"/>
 
         <Container>
           <Card>
@@ -89,7 +104,7 @@ class Myprofile extends Component {
                 >
                   Portfolio
                 </a>
-                <NavLink className='profileLink' to="feed">My Feed</NavLink>
+                <NavLink className='profileLink' to={feed}>My Feed</NavLink>
               </div>
             </Card.Header>
 

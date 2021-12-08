@@ -10,6 +10,8 @@ class Feed extends Component {
     super();
     this.state = {
       matchedUsers: [],
+      userId: "",
+      profileLink: ""
     };
   }
 
@@ -21,17 +23,22 @@ class Feed extends Component {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.matchedUsers);
+        //console.log(data.matchedUsers);
         this.setState({ matchedUsers: data.matchedUsers });
+        this.setState({userId: data.userId});
+        this.setState({profileLink: `/profile/${this.state.userId}`})
+        //let profile = `/profile/${this.state.userId}`;
+        //console.log(profile);
       });
   };
+
 
   _handleInitiateChat = () => {};
   render() {
     return (
       <Container>
         <div id="menuBar">
-          <NavLink id="profileLink" to="/profile">
+          <NavLink id="profileLink" to={this.state.profileLink}>
             My Profile
           </NavLink>
           <NavLink id="profileLink" to="/profile">

@@ -1,3 +1,238 @@
-.banner{
-    margin-top: 50px;
-}
+
+/* Orig CSS */
+    /* .banner{
+        margin-top: 50px;
+    }  */
+
+
+
+/* Entire Page */
+    .main {
+        height: 100vh;
+        background: rgb(63,176,172);
+        background: linear-gradient(150deg, rgba(63,176,172,1) 55%, rgba(250,229,150,1) 55%);
+    }
+
+
+/* Navbar Brand */
+    .navbar-light .navbar-brand {
+        color: #dddfd4 !important;
+        font-weight: bold;
+    }
+
+
+/* Navbar Links */
+    .navbar-light .navbar-nav .nav-link {
+        color: #dddfd4 !important;
+    }
+
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: #fae596 !important;
+    }
+
+
+/* Left side of Page */
+    .mainHeading {
+        letter-spacing: 0.15em;
+    }
+
+    #DEVTitle {
+        color: #fae596;
+    }
+
+    #PlatformTitle {
+        color: #414a4a;
+    }
+
+    .descriptionText {
+        color: #414a4a;
+        letter-spacing: 0.15em;
+    }
+
+    .btn-primary {
+        width: 7em !important;
+        padding: 0.4em !important;
+        letter-spacing: 0.15em !important;
+    }
+
+    .signUpBtn {
+        background-color: #fae596 !important;
+        border-color: grey !important;
+        color: #414a4a !important;
+    }
+
+    .signUpBtn:hover {
+        box-shadow: -3px 3px 15px grey;
+        transform: scale(1.05);
+    }
+
+    .loginBtn {
+        background-color: #dddfd4 !important;
+        border-color: grey !important;
+        color: #414a4a !important;
+    }
+
+    .loginBtn:hover {
+        box-shadow: -3px 3px 15px grey;
+        transform: scale(1.05);
+    }
+
+
+/* Media Queries for Responsive Design */
+
+    /* 320px min-width */
+        @media screen and (min-width: 320px) {
+            .txtIconContainer {
+                margin-top: 4em;
+            }
+            
+            .mainHeading {
+                font-size: 2.5em;
+            }
+            
+            #homeImg {
+                height: 10em;
+                width: 13em;
+            }
+
+        }
+
+
+    /* 534px min-width - homeImg sizing */
+        @media screen and (min-width: 534px) {
+            #homeImg {
+                height: 13em;
+                width: 17em;
+            }
+        }
+
+
+    /* 576px min-width - mainHeading sizing */
+        @media screen and (min-width: 576px) {
+            .mainHeading {
+                font-size: 2.8em;
+            }
+        }
+
+
+    /* 640px min-width - homeImg sizing */
+        @media screen and (min-width: 640px) {
+            #homeImg {
+                height: 17em;
+                width: 22em;
+            }
+        }
+
+
+    /* 768px min-width */
+        @media screen and (min-width: 768px) {
+            .txtIconContainer {
+                margin-top: 4em;
+            }
+            
+            .navbar-light .navbar-nav .nav-link {
+                font-size: 1.2em;
+            }
+
+            .mainHeading {
+                font-size: 3.1em;
+            }
+
+            .descriptionText {
+                font-size: 1.2em;
+            }
+
+            .btn-primary {
+                font-size: 1.1em !important;
+            }
+
+            #homeImg {
+                height: 22.75em;
+                width: 24.75em;
+            }
+        }
+
+
+    /* 992px min-width */
+        @media screen and (min-width: 992px) {
+            .txtIconContainer {
+                margin-top: 5.5em;
+            }
+            
+            .navbar-light .navbar-nav .nav-link {
+                font-size: 1.2em;
+            }
+
+            .mainHeading {
+                font-size: 3.4em;
+            }
+
+            .descriptionText {
+                font-size: 1.2em;
+            }
+
+            .btn-primary {
+                font-size: 1.2em !important;
+            }
+
+            #homeImg {
+                height: 26em;
+                width: 33em;
+            }
+        }
+
+
+    /* 1200px min-width */
+        @media screen and (min-width: 1200px) {
+           
+
+            .navbar-light .navbar-nav .nav-link {
+                font-size: 1.3em;
+            }
+
+            .mainHeading {
+                font-size: 3.7em;
+            }
+
+            .descriptionText {
+                font-size: 1.3em;
+            }
+
+            .btn-primary {
+                font-size: 1.3em !important;
+            }
+
+            #homeImg {
+                height: 29em;
+                width: 38em;
+            }
+        }
+
+
+    /* 1400px min-width */
+        @media screen and (min-width: 1400px) {
+            .txtIconContainer {
+                margin-top: 3em;
+            }
+            
+            .navbar-light .navbar-nav .nav-link {
+                font-size: 1.4em;
+            }
+
+            .mainHeading {
+                font-size: 4em;
+            }
+
+            .descriptionText {
+                font-size: 1.4em;
+            }
+
+            .btn-primary {
+                font-size: 1.4em !important;
+            }
+
+            #homeImg {
+                height: 35em;
+                width: 46em;
+            }
+        }
