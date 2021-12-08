@@ -28,7 +28,7 @@ class Myprofile extends Component {
           this.setState({ user: data.user });
           this.setState({ languages: data.user.currentLanguages });
           this.setState({ userId: data.userId });
-          this.setState({ userPic: data.userImg });
+          this.setState({ userPic: data.pic });
           //console.log(this.state.userPic);
 
           //console.log(this.state.user);
