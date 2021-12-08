@@ -71,6 +71,7 @@ const Createprofile = () => {
       })
         .then((response) => response.json())
         .then((data) => {
+          console.log(data)
           if(data.update){
               //console.log('updated')
               setCreated(true);
