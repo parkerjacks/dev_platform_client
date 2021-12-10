@@ -3,14 +3,17 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Known from './Known'
 import {useState} from 'react'
 //import {Redirect} from 'react-router-dom'
 import { useHistory } from "react-router-dom";
+import Tolearn from "./Tolearn";
 
 
 const Createprofile = () => {
   const [created, setCreated] = useState(false);
   const [profilePic, setProfilePic] = useState(null);
+  const [message,setMessage] = useState('')
   const history = useHistory();
 
   //Converts User Img to URL and Store in State Variable
@@ -39,6 +42,9 @@ const Createprofile = () => {
       ) {
         // console.log({name:knownCheckBoxes[i].name,message:'This is a known language'})
         knownChecked.push(knownCheckBoxes[i].name);
+        if(knownChecked.length > 2){
+          setMessage('Please limit your selections to 3 languages')
+        }
       }
       if (
         knownCheckBoxes[i].checked &&
@@ -47,6 +53,9 @@ const Createprofile = () => {
       ) {
         // console.log({name:knownCheckBoxes[i].name,message:'This is a language to learn'})
         toLearnChecked.push(knownCheckBoxes[i].name);
+        if(toLearnChecked.length > 2){
+          setMessage('Please limit your selections to 3 languages')
+        }
       }
     }
 
@@ -132,295 +141,10 @@ const Createprofile = () => {
             </Card>
 
             {/* languages you know */}
-            <Card bg="light" style={{ margin: "5px" }}>
-              <p>Please select the languages you know(maximum of 3):</p>
-              <Form.Group id="known">
-                {["checkbox"].map((type) => (
-                  <div key={`inline-${type}-known`} className="mb-3">
-                    <Form.Check
-                      inline
-                      label="Java"
-                      name="Java"
-                      type={type}
-                      id={`inline-${type}-1`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Python"
-                      name="Python"
-                      type={type}
-                      id={`inline-${type}-2`}
-                    />
-                    <Form.Check
-                      inline
-                      label="JavaScript"
-                      name="JavaScript"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="PHP"
-                      name="PHP"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Wordpress"
-                      name="Wordpress"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label=".NET"
-                      name=".NET"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="C#"
-                      name="C#"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="C++"
-                      name="C++"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="COBOL"
-                      name="COBOL"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Curl"
-                      name="Curl"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Node"
-                      name="Node"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Go"
-                      name="Go"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Kotlin"
-                      name="Kotlin"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="HTML"
-                      name="HTML"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="CSS"
-                      name="CSS"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="R"
-                      name="R"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Ruby"
-                      name="Ruby"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="SQL"
-                      name="SQL"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="TypeScript"
-                      name="TypeScript"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                  </div>
-                ))}
-              </Form.Group>
-            </Card>
+            <Known/>
 
             {/* languages you want to learn */}
-            <Card bg="light" style={{ margin: "5px" }}>
-              <p>
-                Please select the languages you would like to learn(maximum of
-                3):
-              </p>
-              <Form.Group id="toLearn">
-                {["checkbox"].map((type) => (
-                  <div key={`inline-${type}`} className="mb-3">
-                    <Form.Check
-                      inline
-                      label="Java"
-                      name="Java"
-                      type={type}
-                      id={`inline-${type}-1`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Python"
-                      name="Python"
-                      type={type}
-                      id={`inline-${type}-2`}
-                    />
-                    <Form.Check
-                      inline
-                      label="JavaScript"
-                      name="JavaScript"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="PHP"
-                      name="PHP"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Wordpress"
-                      name="Wordpress"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label=".NET"
-                      name=".NET"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="C#"
-                      name="C#"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="C++"
-                      name="C++"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="COBOL"
-                      name="COBOL"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Curl"
-                      name="Curl"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Node"
-                      name="Node"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Go"
-                      name="Go"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Kotlin"
-                      name="Kotlin"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="HTML"
-                      name="HTML"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="CSS"
-                      name="CSS"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="R"
-                      name="R"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="Ruby"
-                      name="Ruby"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="SQL"
-                      name="SQL"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                    <Form.Check
-                      inline
-                      label="TypeScript"
-                      name="TypeScript"
-                      type={type}
-                      id={`inline-${type}-3`}
-                    />
-                  </div>
-                ))}
-              </Form.Group>
-            </Card>
+            <Tolearn/>
             <Card style={{ margin: "5px" }} bg="light">
               <Form.Group>
                 <Form.Label>Upload Profile Picture:</Form.Label>
