@@ -29,7 +29,7 @@ const Login = () => {
           if(data.loggedIn){
             //console.log(data.message,)
             setLoggedIn(true);
-            console.log(loggedIn); //Why rtn false ??  Also, prevents compiled w/ warning msg: 'loggedIn' is assigned a value but never used)
+            console.log(loggedIn); //Why rtn false ??  Also, this line prevents err msg: 'loggedIn' is assigned a value but never used
             localStorage.setItem('username',e.target.username.value);
             let theUserId = data.userId;
             history.push(`/feed/${theUserId}`);
@@ -40,12 +40,6 @@ const Login = () => {
         })
       }
      
-      //console.log(loggedIn);
-
-    /* if(loggedIn){
-        return <Redirect to='/feed' />  
-    } */
-    
   return (
     <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
       <h1>Login</h1>

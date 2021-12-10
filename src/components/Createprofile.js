@@ -3,9 +3,13 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+
+import {useState} from 'react'
+=======
 import Known from "./Known";
 import { useState } from "react";
 //import {Redirect} from 'react-router-dom'
+
 import { useHistory } from "react-router-dom";
 import Tolearn from "./Tolearn";
 
@@ -19,12 +23,19 @@ const Createprofile = () => {
     const reader = new FileReader();
     reader.addEventListener("load", () => {
       setProfilePic(reader.result);
+
+    })
+    reader.readAsDataURL(e.target.files[0]);
+  }
+ 
+=======
       //localStorage.setItem("profile-pic", reader.result)
     });
     reader.readAsDataURL(e.target.files[0]);
   };
 
   //console.log(profilePic);
+
 
   const _handleSubmit = (e) => {
     e.preventDefault();
@@ -62,7 +73,11 @@ const Createprofile = () => {
       userImg: profilePic,
     };
 
+
+    //localStorage.setItem('profilePic', e.target.pic.value)
+=======
     localStorage.setItem("profilePic", e.target.pic.value);
+
     //console.log(e.target.pic.value);
      if(knownChecked.length > 3 || toLearnChecked.length > 3){
         alert('Please limit language selections to 3 or less.')
@@ -95,11 +110,14 @@ const Createprofile = () => {
     
   };
 
+
+=======
   /*  if(created){
       return(
           <Redirect to='/profile' />
       )
   } */
+
 
   return (
     <div>
