@@ -18,7 +18,7 @@ function App() {
       <Route  path='/login' component={Login}/>
       <Route  path='/profile/:id' component={Myprofile}/>
       <Route  path='/feed/:id' component={Feed}/>
-      {localStorage.getItem('username') ? <Route exact path="/create" component={Createprofile} /> : ''}
+      {localStorage.getItem('username') ? <Route path="/create" component={Createprofile} /> : ''}
     </Switch>
   );
 }

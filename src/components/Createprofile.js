@@ -3,13 +3,8 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-
-import {useState} from 'react'
-=======
-import Known from "./Known";
 import { useState } from "react";
-//import {Redirect} from 'react-router-dom'
-
+import Known from "./Known";
 import { useHistory } from "react-router-dom";
 import Tolearn from "./Tolearn";
 
@@ -23,19 +18,9 @@ const Createprofile = () => {
     const reader = new FileReader();
     reader.addEventListener("load", () => {
       setProfilePic(reader.result);
-
-    })
-    reader.readAsDataURL(e.target.files[0]);
-  }
- 
-=======
-      //localStorage.setItem("profile-pic", reader.result)
     });
     reader.readAsDataURL(e.target.files[0]);
   };
-
-  //console.log(profilePic);
-
 
   const _handleSubmit = (e) => {
     e.preventDefault();
@@ -51,7 +36,6 @@ const Createprofile = () => {
       ) {
         // console.log({name:knownCheckBoxes[i].name,message:'This is a known language'})
         knownChecked.push(knownCheckBoxes[i].name);
-        
       }
       if (
         knownCheckBoxes[i].checked &&
@@ -63,7 +47,6 @@ const Createprofile = () => {
       }
     }
 
-
     const data = {
       github: e.target.github.value,
       linkedin: e.target.linkedin.value,
@@ -73,51 +56,44 @@ const Createprofile = () => {
       userImg: profilePic,
     };
 
-
     //localStorage.setItem('profilePic', e.target.pic.value)
-=======
+
     localStorage.setItem("profilePic", e.target.pic.value);
 
     //console.log(e.target.pic.value);
-     if(knownChecked.length > 3 || toLearnChecked.length > 3){
-        alert('Please limit language selections to 3 or less.')
-      } else{
+    if (knownChecked.length > 3 || toLearnChecked.length > 3) {
+      alert("Please limit language selections to 3 or less.");
+    } else {
+      fetch(
+        `http://localhost:3001/user/${localStorage.getItem(
+          "username"
+        )}/profile/create`,
+        {
+          method: "PUT", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.update) {
+            //console.log('updated')
+            setCreated(true);
 
-        fetch(
-          `http://localhost:3001/user/${localStorage.getItem(
-            "username"
-          )}/profile/create`,
-          {
-            method: "PUT", // or 'PUT'
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(data),
+            let theUserId = data.userId;
+            history.push(`/profile/${theUserId}`);
           }
-        )
-          .then((response) => response.json())
-          .then((data) => {
-        
-            if (data.update) {
-              //console.log('updated')
-              setCreated(true);
-    
-              let theUserId = data.userId;
-              history.push(`/profile/${theUserId}`);
-            }
-          });
-      }
-    
+        });
+    }
   };
 
-
-=======
   /*  if(created){
       return(
           <Redirect to='/profile' />
       )
   } */
-
 
   return (
     <div>
