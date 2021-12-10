@@ -1,14 +1,7 @@
 
-/* Orig CSS */
-    /* .banner{
-        margin-top: 50px;
-    }  */
-
-
-
 /* Entire Page */
     .main {
-        height: 100vh;
+        height: 120vh;
         background: rgb(63,176,172);
         background: linear-gradient(150deg, rgba(63,176,172,1) 55%, rgba(250,229,150,1) 55%);
     }
@@ -80,21 +73,32 @@
 
 /* Media Queries for Responsive Design */
 
+     /* 280px min-width */
+     @media screen and (min-width: 280px) {
+        .txtIconContainer {
+            margin-top: 2.5em;
+        }
+        
+        .mainHeading {
+            font-size: 2.2em;
+        }
+
+        #homeImg {
+            height: 10em;
+            width: 13em;
+        }
+    }
+
+
     /* 320px min-width */
         @media screen and (min-width: 320px) {
             .txtIconContainer {
-                margin-top: 4em;
+                margin-top: 0.5em;
             }
             
             .mainHeading {
                 font-size: 2.5em;
             }
-            
-            #homeImg {
-                height: 10em;
-                width: 13em;
-            }
-
         }
 
 
@@ -182,10 +186,37 @@
         }
 
 
+    /* 1024px min-width, 1366px min-height (iPad Pro)  */
+        @media screen and (min-width: 1024px) and (min-height: 1366px) {
+            .txtIconContainer {
+                margin-top: 5.5em;
+            }
+            
+            .navbar-light .navbar-nav .nav-link {
+                font-size: 1.25em;
+            }
+
+            .mainHeading {
+                font-size: 3.55em;
+            }
+
+            .descriptionText {
+                font-size: 1.25em;
+            }
+
+            .btn-primary {
+                font-size: 1.25em !important;
+            }
+
+            #homeImg {
+                height: 26em;
+                width: 33.5em;
+            }
+        }
+
+
     /* 1200px min-width */
         @media screen and (min-width: 1200px) {
-           
-
             .navbar-light .navbar-nav .nav-link {
                 font-size: 1.3em;
             }

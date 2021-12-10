@@ -4,7 +4,6 @@ import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import {useState} from 'react'
-//import {Redirect} from 'react-router-dom'
 import { useHistory } from "react-router-dom";
 
 
@@ -18,13 +17,11 @@ const Createprofile = () => {
     const reader = new FileReader();
     reader.addEventListener("load", () => {
       setProfilePic(reader.result);
-      //localStorage.setItem("profile-pic", reader.result)
     })
     reader.readAsDataURL(e.target.files[0]);
   }
  
-  //console.log(profilePic);
-  
+
   const _handleSubmit = (e) => {
     e.preventDefault();
     //console.log(e);
@@ -59,7 +56,7 @@ const Createprofile = () => {
       userImg: profilePic
     };
 
-    localStorage.setItem('profilePic', e.target.pic.value)
+    //localStorage.setItem('profilePic', e.target.pic.value)
     //console.log(e.target.pic.value);
     
     fetch(`http://localhost:3001/user/${localStorage.getItem('username')}/profile/create`, {
@@ -82,13 +79,6 @@ const Createprofile = () => {
           }
         })
   };
-
-
- /*  if(created){
-      return(
-          <Redirect to='/profile' />
-      )
-  } */
 
   return (
     <div>
