@@ -1,7 +1,7 @@
 
 /* Entire Page */
     .main {
-        height: 120vh;
+        height: 100vh;
         background: rgb(63,176,172);
         background: linear-gradient(150deg, rgba(63,176,172,1) 55%, rgba(250,229,150,1) 55%);
     }
@@ -42,16 +42,19 @@
         letter-spacing: 0.15em;
     }
 
-    .btn-primary {
+   /*  .btn-primary {
         width: 7em !important;
         padding: 0.4em !important;
         letter-spacing: 0.15em !important;
-    }
+    } */
 
     .signUpBtn {
         background-color: #fae596 !important;
         border-color: grey !important;
         color: #414a4a !important;
+        width: 7em !important;
+        padding: 0.4em !important;
+        letter-spacing: 0.15em !important;
     }
 
     .signUpBtn:hover {
@@ -63,6 +66,9 @@
         background-color: #dddfd4 !important;
         border-color: grey !important;
         color: #414a4a !important;
+        width: 7em !important;
+        padding: 0.4em !important;
+        letter-spacing: 0.15em !important;
     }
 
     .loginBtn:hover {

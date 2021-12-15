@@ -1,16 +1,175 @@
-.form{
-    margin:10px;
-}
-.label{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color:#f5f5f5;
-    font-weight: bold;
-}
-.error{
-    color:red;
-    font-weight: bold;
-    font-size: x-large;
-    display:flex;
-    justify-content: center;
 
+.mainSignup {
+    height: 100vh;
+    background: linear-gradient(0deg, rgba(63, 176, 172, 0.7), rgba(63, 176, 172, 0.7)), url('../images/pplTogether.jpeg') no-repeat center fixed;     
+    background-size: cover;
 }
+
+.signUpHeading {
+    /* color: rgb(6, 6, 77); */
+    color: ivory;
+    letter-spacing: 0.15em;
+    text-shadow: 2.5px 2.5px 8px lightgray;
+    font-weight: bold;
+}
+
+.signupCard {
+    background-color: #fae596 !important;
+    padding: 1.75em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/* .formLabel {
+    color: #414a4a;
+    letter-spacing: 0.15em;
+} */
+
+::placeholder {
+    letter-spacing: 0.15em;
+    /* font-size: 1.2em; */
+}
+
+.signupButton {
+    /* background-color: #dddfd4 !important; */
+    background-color: ivory !important;
+    border-color: lightgrey !important;
+    color: #414a4a !important;
+    width: 5em !important;
+    padding: 0em !important;
+    letter-spacing: 0.05em !important;
+}
+
+.signupButton:hover {
+    box-shadow: -3px 3px 15px grey;
+    transform: scale(1.05);
+}
+
+.rtnHomeLink {
+    color: darkblue;
+    /* color: rgb(6, 6, 77); */
+}
+
+.rtnHomeLink:hover {
+    color: #fae596;
+}
+
+.errorMsg {
+    color: darkblue;
+    /* color: rgb(6, 6, 77); */
+    text-align: center;
+    margin-top: 0.5em;
+    letter-spacing: 0.15em;
+    text-transform: capitalize;
+    text-shadow: 2.5px 2.5px 10px rgb(153, 153, 187);
+}
+
+
+/* Media Queries for Responsive Design */
+
+    /* 280px min-width */
+        @media screen and (min-width: 280px) {
+            .signUpHeading {
+                font-size: 2.4em;
+                margin-top: 22.5vh;
+            }  
+            ::placeholder {
+                font-size: 1.05em;
+            }
+            .rtnHomeLink {
+                font-size: 1.05em;
+            }
+            .errorMsg {
+                font-size: 1.3em;
+                font-weight: bold;
+            }
+        }
+
+
+    /* 320px min-width */
+        @media screen and (min-width: 320px) {
+            .signUpHeading {
+                margin-top: 18vh;
+            } 
+        }
+
+
+    /* 576px min-width - mainHeading sizing */
+        @media screen and (min-width: 576px) {
+            .signUpHeading {
+                font-size: 2.7em;
+            }  
+            .rtnHomeLink {
+                font-size: 1.1em;
+            }
+            .errorMsg {
+                font-size: 1.5em;
+                font-weight: bold;
+            } 
+        }
+
+
+    /* 768px min-width */
+        @media screen and (min-width: 768px) and (height: 1024px) {
+            ::placeholder {
+                font-size: 1.1em;
+            }  
+        }
+
+
+    /* 992px min-width */
+        @media screen and (min-width: 992px) {
+            .signUpHeading {
+                font-size: 3em;
+            }  
+            .rtnHomeLink {
+                font-size: 1.15em;
+            }
+            .errorMsg {
+                font-size: 1.7em;
+                font-weight: bold;
+            } 
+        }
+
+
+    /* 1024px min-width, 1366px min-height (iPad Pro)  */
+        @media screen and (min-width: 1024px) and (height: 1366px) {
+            .signUpHeading {
+                margin-top: 22.5vh;
+            } 
+        }
+
+
+    /* 1200px min-width */
+        @media screen and (min-width: 1200px) {
+            .signUpHeading {
+                font-size: 3.2em;
+            } 
+            ::placeholder {
+                font-size: 1.2em;
+            } 
+            .rtnHomeLink {
+                font-size: 1.2em;
+            }
+            .errorMsg {
+                font-size: 1.9em;
+                font-weight: bold;
+            }
+        }
+
+
+    /* 1400px min-width */
+        @media screen and (min-width: 1400px) {
+            .signUpHeading {
+                font-size: 3.5em;
+            }  
+            .rtnHomeLink {
+                font-size: 1.3em;
+            }
+            .errorMsg {
+                font-size: 2.1em;
+                font-weight: bold;
+            }
+        }
+
+
