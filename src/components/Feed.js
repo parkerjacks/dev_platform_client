@@ -2,7 +2,7 @@ import { Component } from "react";
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { NavLink } from "react-router-dom";
+import { NavLink,Redirect } from "react-router-dom";
 import "../styles/Feed.css";
 
 class Feed extends Component {
@@ -11,7 +11,8 @@ class Feed extends Component {
     this.state = {
       matchedUsers: [],
       userId: "",
-      profileLink: ""
+      profileLink: "",
+      created:false
     };
   }
 
@@ -33,12 +34,38 @@ class Feed extends Component {
   };
 
 
-  _handleInitiateChat = () => {
-    console.log('clicked');
+  _handleInitiateChat = (e) => {
+    console.log(this.state.userId, e.target.id);
+    const data = { currentUserId:this.state.userId.toString(),otherUserId:e.target.id };
+    localStorage.setItem("currentUser",data.currentUserId)
+    localStorage.setItem("otherUser", data.otherUserId)
+    localStorage.getItem('otherUser')
+    localStorage.getItem('currentUser')
+
+fetch('http://localhost:3001/chat/create', {
+  method: 'POST', // or 'PUT'
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+})
+.then(response => response.json())
+.then(data => {
+  console.log('Success:', data.message,data.created);
+  if(data.created){
+    this.setState({created:true})
+    
+  }
+  
+})
+
     
   };
 
   render() {
+    if(this.state.created){
+      return <Redirect to='/chat'/>
+    }
     return (
       <Container>
         <div id="menuBar">
@@ -111,7 +138,7 @@ class Feed extends Component {
                 </Card.Footer>
               </Card.Body>
               <Button
-                id="button"
+                id={user.id}
                 className="yell-back"
                 style={{ backgroundColor: "#fae596" }}
                 onClick={this._handleInitiateChat}

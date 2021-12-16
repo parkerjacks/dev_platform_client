@@ -20,7 +20,7 @@ function App() {
       <Route  path='/login' component={Login}/>
       <Route  path='/profile/:id' component={Myprofile}/>
       <Route  path='/feed/:id' component={Feed}/>
-      <Route  path='/chat/:id' component={Chat}/>
+      <Route  path='/chat' component={Chat}/>
       {localStorage.getItem('username') ? <Route path="/create" component={Createprofile} /> : ''}
     </Switch>
   );
