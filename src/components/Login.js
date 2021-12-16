@@ -2,10 +2,13 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import Container from "react-bootstrap/esm/Container";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useHistory } from "react-router-dom";
+import "../styles/Login.css";
 
 
 const Login = () => {
@@ -41,38 +44,43 @@ const Login = () => {
       }
      
   return (
-    <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
-      <h1>Login</h1>
-      <div className="form">
-        <Container>
-          <Card style={{backgroundColor:'#3FB0AC'}}>
-            <Form onSubmit={_handleSubmit} >
-              <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label className="label">Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter username"
-                  name="username"
-                />
-              </Form.Group>
+    <div className="mainLogin">
+      <Container>
+        <Row className="justify-content-center">
+          <Col xs={10} lg={7} xl={6}>
+            <div className="loginHeading">Login</div>
+            <Card className="loginCard">
+              <Form onSubmit={_handleSubmit} >
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  {/* <Form.Label className="formLabel">Username</Form.Label> */}
+                  <Form.Control
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                  />
+                </Form.Group>
 
-              <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label className="label">Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                />
-              </Form.Group>
-              <Button variant="light" type="submit">
-                Login
-              </Button>
-            </Form>
-          </Card>
-        </Container>
-        <p>{error}</p>
-      </div>
-      <NavLink style={{color:'#3FB0AC'}}to="/">Return Home</NavLink>
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  {/* <Form.Label className="formLabel">Password</Form.Label> */}
+                  <Form.Control
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                  />
+                </Form.Group>
+
+                <Button className="loginButton" type="submit">
+                  Login
+                </Button>
+              </Form>
+            </Card>
+
+            <NavLink className="rtnHomeLink" to="/">Return Home</NavLink>
+              
+            <p className="errorMsg">{error}</p>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };
