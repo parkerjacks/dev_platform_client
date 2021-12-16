@@ -33,7 +33,11 @@ class Feed extends Component {
   };
 
 
-  _handleInitiateChat = () => {};
+  _handleInitiateChat = () => {
+    console.log('clicked');
+    
+  };
+
   render() {
     return (
       <Container>
