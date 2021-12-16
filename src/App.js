@@ -8,6 +8,8 @@ import Login from './components/Login';
 import Myprofile from './components/Profile';
 import Feed from './components/Feed';
 import Createprofile from './components/Createprofile';
+import Chat from './components/chat_components/Chat';
+
 
 function App() {  
   return (
@@ -18,6 +20,7 @@ function App() {
       <Route  path='/login' component={Login}/>
       <Route  path='/profile/:id' component={Myprofile}/>
       <Route  path='/feed/:id' component={Feed}/>
+      <Route  path='/chat/:id' component={Chat}/>
       {localStorage.getItem('username') ? <Route path="/create" component={Createprofile} /> : ''}
     </Switch>
   );
