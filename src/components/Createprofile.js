@@ -103,7 +103,7 @@ const Createprofile = () => {
         connected!
       </p>
       <Container>
-        <Card bg="info">
+        <Card bg="info"> {/*make a component */}
           <p>Make sure to include https:// or http:// with links</p>
           <Form onSubmit={_handleSubmit} encType="multipart/form-data">
             <Card bg="light" style={{ margin: "5px" }}>
