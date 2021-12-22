@@ -55,14 +55,17 @@ const Signup = () => {
                   <Form.Group className="mb-3" controlId="formBasicUsername">
                     {/* <Form.Label className="label">Username</Form.Label> */}
                     <Form.Control
+                      className = "enterCredentials"
                       type="text"
                       placeholder="Username"
                       name="username"
                     />
                   </Form.Group>
+
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                     {/* <Form.Label className="label">Email address</Form.Label> */}
                     <Form.Control
+                      className = "enterCredentials"
                       type="email"
                       placeholder="Email"
                       name="email"
@@ -72,6 +75,7 @@ const Signup = () => {
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                     {/* <Form.Label className="label">Password</Form.Label> */}
                     <Form.Control
+                      className = "enterCredentials"
                       type="password"
                       placeholder="Password"
                       name="password"

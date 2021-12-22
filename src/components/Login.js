@@ -54,6 +54,7 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   {/* <Form.Label className="formLabel">Username</Form.Label> */}
                   <Form.Control
+                    className = "enterCredentials"
                     type="text"
                     placeholder="Username"
                     name="username"
@@ -63,6 +64,7 @@ const Login = () => {
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                   {/* <Form.Label className="formLabel">Password</Form.Label> */}
                   <Form.Control
+                    className = "enterCredentials"
                     type="password"
                     placeholder="Password"
                     name="password"

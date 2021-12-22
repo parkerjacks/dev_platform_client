@@ -7,6 +7,7 @@ import { useState } from "react";
 import Known from "./Known";
 import { useHistory } from "react-router-dom";
 import Tolearn from "./Tolearn";
+import Links from './Links';
 
 const Createprofile = () => {
   const [created, setCreated] = useState(false);
@@ -98,48 +99,20 @@ const Createprofile = () => {
   return (
     <div>
       <h1>Create Profile</h1>
+
       <p>
         Now that you have signed up. Let's create your profile and get you
         connected!
       </p>
-      <Container>
-        <Card bg="info"> {/*make a component */}
-          <p>Make sure to include https:// or http:// with links</p>
-          <Form onSubmit={_handleSubmit} encType="multipart/form-data">
-            <Card bg="light" style={{ margin: "5px" }}>
-              {/* github */}
-              <p>Github:</p>
-              <Form.Group className="mb-3" controlId="formBasicGithub">
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Github URL"
-                  name="github"
-                />
-              </Form.Group>
-              {/* linkedin */}
-              <p>LinkedIn:</p>
-              <Form.Group className="mb-3" controlId="formBasicLinkedIn">
-                <Form.Control
-                  type="text"
-                  placeholder="Enter LinkedIn URL"
-                  name="linkedin"
-                />
-              </Form.Group>
-              {/* portfolio */}
-              <p>Portfolio:</p>
-              <Form.Group className="mb-3" controlId="formBasicPortfolio">
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Portfolio URL"
-                  name="portfolio"
-                />
-              </Form.Group>
-            </Card>
-            {/* languages you know */}
-            <Known />
 
-            {/* languages you want to learn */}
-            <Tolearn />
+      <Container>
+        <Card bg="info">{/*make a component */}
+          <p>Make sure to include https:// or http:// with links</p>
+          <Form onSubmit={_handleSubmit} encType="multipart/form-data"> 
+            <Links /> {/* Type Links for Github, LinkedIn & Portfolio */}
+            <Known />  {/* Languages you know */}
+            <Tolearn />   {/* Languages you want to learn */}
+
             <Card style={{ margin: "5px" }} bg="light">
               <Form.Group>
                 <Form.Label>Upload Profile Picture:</Form.Label>
@@ -150,6 +123,7 @@ const Createprofile = () => {
                 />
               </Form.Group>
             </Card>
+            
             <Button variant="light" type="submit">
               Create Profile
             </Button>
