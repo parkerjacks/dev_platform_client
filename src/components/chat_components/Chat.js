@@ -2,6 +2,7 @@ import { Component } from "react";
 import Title from './Title'
 import ChatFeed from "./Feed";
 import {NavLink} from 'react-router-dom'
+import Form from "./Form";
 class Chat extends Component {
     constructor(){
         super()
@@ -31,7 +32,9 @@ class Chat extends Component {
 
                <Title/> 
                 <ChatFeed/>
+                <Form/>
                 <NavLink to="/profile">Back to Profile</NavLink>
+                
             </div>
         )
 
