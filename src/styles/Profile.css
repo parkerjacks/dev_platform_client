@@ -1,15 +1,251 @@
-#body{
-    background-color: #dddfd4;
+
+.mainProfileSection {
     height: 100vh;
+    overflow: auto;
+    background: linear-gradient(0deg, rgba(63, 176, 172, 0.7), rgba(63, 176, 172, 0.7)), url('../images/SunsetOcean.jpeg') no-repeat center fixed;     
+    background-size: cover;
 }
 
-.profileLink{
-    color:#3FB0AC;
+.row {
+    --bs-gutter-x: 0 !important;
 }
+
+.picNameLangContainer {
+    width:fit-content;
+    height: fit-content;
+}
+
+#profilePic {
+    border-radius: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#userName {
+    color: #dddfd4;
+    font-weight: bold;
+    text-align: center;
+}
+
+.languagesSection {
+    border-width: 3px;
+    border-style: solid;
+    border-image: linear-gradient(to top, rgb(250,229,150), rgba(0, 0, 0, 0)) 1 100%;
+    padding: 0.75em;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color: #dddfd4;
+}
+
+#languageTitle {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
 #card-banner{
     background-color: #fae596;
+    margin-top: 1.75em;
+    margin-bottom: 1.75em;
+    padding: 0.5em;
 }
-#logout{
-   color:#3FB0AC;
-   border:#fae596 solid;
+
+#chatBtn {
+    background-color: #3FB0AC;
+    border: #3FB0AC;
+    margin-top: 0.5em;
 }
+
+
+
+
+/* Media Queries for Responsive Design */
+
+    /* 280px min-width */
+    @media screen and (min-width: 280px) {
+        .picNameLangContainer {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #profilePic {
+            width: 145px;
+            height: 130px;
+        }
+        #userName {
+            font-size: 1.3em;
+        }
+        .languagesSection {
+            font-size: 1.15em;
+        }
+        #card-banner{
+            /* margin-left: 1.6em; */
+            margin-left: 8vw;
+        }
+        .formTxtArea {
+            height: 115px;
+        }
+    }
+
+
+/* 320px min-width */
+    @media screen and (min-width: 320px) {
+        
+    }
+
+
+/* 576px min-width  */
+    @media screen and (min-width: 576px) {
+        .picNameLangContainer {
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #profilePic {
+            width: 180px;
+            height: 161px;
+        }
+        #userName {
+            font-size: 1.4em;
+        }
+
+        .languagesSection {
+            font-size: 1.25em;
+        }
+        #card-banner{
+            margin-left: 8vw;
+        }
+    }
+
+/* 768px min-width */
+    @media screen and (min-width: 768px) {
+        .picNameLangContainer {
+            margin-left: 1em;
+         }
+        #profilePic {
+            width: 215px;
+            height: 192px;
+        }
+        #userName {
+            font-size: 1.5em;
+        }
+        .languagesSection {
+            font-size: 1.33em;
+        }
+        #card-banner{
+            height: 66vh;
+        }
+        .formTxtArea {
+            height: 45vh;
+        }
+    }
+
+/* 768px min-width | height: 1024px ( iPad ) */
+    @media screen and (min-width: 768px) and (height: 1024px) {
+        #profilePic {
+            width: 215px;
+            height: 192px;
+        }
+        #userName {
+            font-size: 1.5em;
+        }
+        .languagesSection {
+            font-size: 1.25em;
+        }
+        #card-banner{
+            height: 33vh;
+        }
+        .formTxtArea {
+            height: 25vh;
+        }
+    }
+
+
+/* 992px min-width */
+    @media screen and (min-width: 992px) {
+        #profilePic {
+            width: 250px;
+            height: 224px;
+        }
+        #userName {
+            font-size: 1.6em;
+        }
+        .languagesSection {
+            font-size: 1.42em;
+        }
+    }
+
+
+/* 1024px min-width | 1366px min-height ( iPad Pro )  */
+    @media screen and (min-width: 1024px) and (height: 1366px) {
+        #profilePic {
+            width: 250px;
+            height: 224px;
+        }
+        #userName {
+            font-size: 1.6em;
+        }
+        .languagesSection {
+            font-size: 1.42em;
+        }
+        #card-banner{
+            height: 29vh;
+        }
+        .formTxtArea {
+            height: 23vh;
+        }
+    }
+
+
+/* 1200px min-width */
+    @media screen and (min-width: 1200px) {
+        #profilePic {
+            /* width: 285px;
+            height: 228px; */
+            width: 285px;
+            height: 255px;
+        }
+        #userName {
+            font-size: 1.7em;
+        }
+        .languagesSection {
+            font-size: 1.5em;
+        }
+    }
+
+
+/* 1280px min-width | 800 min-height ( Nest Hub Max ) */
+@media screen and (min-width: 1200px) and (height: 800px) {
+    #profilePic {
+        /* width: 285px;
+        height: 228px; */
+        width: 285px;
+        height: 255px;
+    }
+    #userName {
+        font-size: 1.7em;
+    }
+    .languagesSection {
+        font-size: 1.5em;
+    }
+    #card-banner{
+        height: 52vh;
+    }
+    .formTxtArea {
+        height: 38vh;
+    }
+}
+
+
+/* 1400px min-width */
+    @media screen and (min-width: 1400px) {
+        #profilePic {
+            width: 320px;
+            height: 286px;
+        } 
+        #userName {
+            font-size: 1.7em;
+        }
+        .languagesSection {
+            font-size: 1.5em;
+        }
+    }

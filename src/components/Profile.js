@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -29,10 +33,6 @@ class Myprofile extends Component {
           this.setState({ languages: data.user.currentLanguages });
           this.setState({ userId: data.userId });
           this.setState({ userPic: data.pic });
-          //console.log(this.state.userPic);
-
-          //console.log(this.state.user);
-          //console.log(this.state.userId);
         } else {
           console.log("broken");
         }
@@ -45,8 +45,8 @@ class Myprofile extends Component {
   };
 
   _handleBanner = (e) => {
-    let username = localStorage.getItem("username");
     e.preventDefault();
+    let username = localStorage.getItem("username");
     this.setState({ bannerMessage: e.target.banner.value });
     fetch("https://dev-plat.herokuapp.com/user/" + username, {
       method: "PUT", // or 'PUT'
@@ -68,79 +68,83 @@ class Myprofile extends Component {
   render() {
     if (!localStorage.getItem("username")) return <Login />;
     let feed = `/feed/${this.state.userId}`;
-    //const profilePicUrl = localStorage.getItem("profile-pic");
     
     return (
-      <div style={{backgroundColor:'#dddfd4',height:'100vh',color:'#3FB0AC'}}>
-        <h1>{this.state.user.username}</h1>
-
-        <img src={this.state.userPic} alt="user profile pic"/>
-
-        <Container>
-          <Card>
-            <Card.Header style={{backgroundColor:'#fae596'}}>
-              <div style={{ display: "flex", justifyContent: "space-around" }}>
-                <a
+      <div className="mainProfileSection">
+        <Navbar expand="md" collapseOnSelect>
+          <Container>
+            <Navbar.Brand href="#home"></Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mx-auto">
+                <Nav.Link
+                  className="me-5"
                   href={this.state.user.github}
                   target="_blank"
                   rel="noreferrer"
-                  className='profileLink'
                 >
                   Github
-                </a>
-                <a
+                </Nav.Link>
+                <Nav.Link
+                  className="me-5"
                   href={this.state.user.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className='profileLink'
                 >
                   LinkedIn
-                </a>
-                <a
+                </Nav.Link>
+                <Nav.Link
+                  className="me-5"
                   href={this.state.user.portfolio}
                   target="_blank"
                   rel="noreferrer"
-                  className='profileLink'
                 >
                   Portfolio
-                </a>
-                <NavLink className='profileLink' to={feed}>My Feed</NavLink>
+                </Nav.Link>
+                <Nav.Link className="me-5" href={feed}>
+                  My Feed
+                </Nav.Link>
+                <Nav.Link className="" onClick={this._handleLogout}>
+                  Logout
+                </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+        </Navbar>
+
+        
+          <Row>
+            <Col xs={12} md={5} >
+              <div class="picNameLangContainer">
+                <img src={this.state.userPic} alt="user profile pic" id="profilePic" />
+                <div id="userName">{this.state.user.username}</div>
+                <div className="languagesSection mt-3">
+                  <div id="languageTitle">My Languages</div>
+                  <div className="languages">{this.state.languages[0]}</div>
+                  <div className="languages">{this.state.languages[1]}</div>
+                  <div className="languages">{this.state.languages[2]}</div>
+                </div>
               </div>
-            </Card.Header>
-
-            <Card.Body style={{backgroundColor:'#dddfd4',color:'#3FB0AC'}}>
-              {/* <img src={localStorage.getItem('profilePic')} alt="profile_picture" /> */}
-
-              <div  style={{ display: "inline" }}>
-                <h6>
-                  <u>My Languages:</u>
-                </h6>
-                <p>
-                  <i>{this.state.languages[0]}</i>
-                </p>
-                <p>{this.state.languages[1]}</p>
-                <p>{this.state.languages[2]}</p>
-              </div>
-            </Card.Body>
-          </Card>
-          <Card id='card-banner'>
-            <Form onSubmit={this._handleBanner}>
-              <Form.Control
-                as="textarea"
-                placeholder="What's on your mind? What do you want to chat about today?"
-                name="banner"
-                defaultValue={this.state.bannerMessage}
-                style={{ height: "100px" }}
-              />
-              <Button style={{backgroundColor:'#3FB0AC'}} type="submit">
-                <BI.BiCommentCheck />
-              </Button>
-            </Form>
-          </Card>
-
-          <Button id='logout' style={{backgroundColor:'#fae596',margin:'2px'}} onClick={this._handleLogout}>Logout</Button>
-        </Container>
-      </div>
+            </Col>
+            
+            <Col xs={11} md={6}>
+                <Card id="card-banner">
+                  <Form onSubmit={this._handleBanner}>
+                    <Form.Control
+                      as="textarea"
+                      placeholder="What's on your mind? What do you want to chat about today?"
+                      name="banner"
+                      defaultValue={this.state.bannerMessage}
+                      className="formTxtArea"
+                    />
+                    <Button id="chatBtn" type="submit">
+                      <BI.BiCommentCheck />
+                    </Button>
+                  </Form>
+                </Card>
+            </Col>
+          </Row>
+        </div>
     );
   }
 }

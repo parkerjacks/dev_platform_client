@@ -73,7 +73,7 @@
                 font-size: 2.4em;
                 margin-top: 22.5vh;
             }  
-            ::placeholder {
+            input[type="email"].enterCredentials::-webkit-input-placeholder {
                 font-size: 1.05em;
             }
             .rtnHomeLink {
@@ -111,9 +111,9 @@
 
     /* 768px min-width */
         @media screen and (min-width: 768px) and (height: 1024px) {
-            ::placeholder {
+            input[type="email"].enterCredentials::-webkit-input-placeholder {
                 font-size: 1.1em;
-            }  
+            } 
         }
 
 
@@ -145,9 +145,9 @@
             .signUpHeading {
                 font-size: 3.2em;
             } 
-            ::placeholder {
+            input[type="email"].enterCredentials::-webkit-input-placeholder {
                 font-size: 1.2em;
-            } 
+            }
             .rtnHomeLink {
                 font-size: 1.2em;
             }
